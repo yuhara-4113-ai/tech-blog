@@ -22,15 +22,16 @@ export function convertFrontmatter(outputPath?: string) {
     // Add new fields
     if (outputPath && existsSync(outputPath)) {
       const existingData = matter(readFileSync(outputPath, 'utf8')).data
-      dataCloned.updated_at = existingData.updated_at || null
       dataCloned.id = existingData.id || null
       dataCloned.organization_url_name =
         existingData.organization_url_name || null
     } else {
-      dataCloned.updated_at = null
       dataCloned.id = null
       dataCloned.organization_url_name = null
     }
+    dataCloned.updated_at = ''
+    dataCloned.slide = false
+    dataCloned.ignorePublish = false
 
     const frontmatter = yaml.dump(dataCloned)
     return `---\n${frontmatter}---\n${content}`

@@ -17,9 +17,9 @@ runs:
   steps:
     - uses: actions/setup-node@v3
       with:
-        node-version: '18.16.0'
+        node-version: '22.9.1'
     - name: Install qiita-cli
-      run: npm install -g @qiita/qiita-cli@v0.3.0
+      run: npm install -g @qiita/qiita-cli@v1.6.1
       shell: bash
     - name: Publish articles
       run: qiita publish --all
@@ -29,19 +29,27 @@ runs:
       shell: bash
     - name: Commit
       run: |
+        # 入力された rootdir （記事ルートディレクトリ）が指定されているか確認
         if [[ -n "${{ inputs.rootdir }}" ]]; then
+          # 指定されている場合は、その直下の public ディレクトリ内の変更ファイルを追加
           git add ${{ inputs.rootdir }}/public/*
         else
+          # 指定がない場合は、プロジェクト直下の public ディレクトリ内の変更ファイルを追加
           git add public/*
         fi
+        # ステージされた変更が存在するか確認。差分があればコミット対象とする
         if ! git diff --staged --exit-code --quiet; then
+          # GitHub Actions 用のユーザー情報をグローバル設定（コミットに必要な情報）
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          # [skip ci] を付けることで、コミットに対する CI の実行を防止
           git commit -m '[skip ci] Updated by qiita-cli'
         fi
       shell: bash
     - name: Push
       uses: CasperWA/push-protected@v2
       with:
+        # GitHub の push に必要な認証トークン
         token: ${{ inputs.github-token }}
+        # メインブランチに対して push を行う設定
         branch: main
