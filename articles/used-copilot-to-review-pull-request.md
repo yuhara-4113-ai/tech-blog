@@ -18,6 +18,7 @@ published: true
 - freeプランは対象外
 
 その他の前提事項は下記の公式アナウンスを参照してください
+
 https://docs.github.com/ja/copilot/using-github-copilot/code-review/using-copilot-code-review
 
 > organization の所有者が organization のポリシーで [Copilot in GitHub.com] > [Opt in to preview features] を有効にしている場合のみです。
@@ -33,6 +34,7 @@ https://docs.github.com/ja/copilot/using-github-copilot/code-review/using-copilo
 ### 対策
 下記の「Join the preview」をクリックで、GitHubから「権限付与メール」が届けばOKです
 ※私の場合は数分で届きました
+
 https://github.com/github-copilot/code-review-preview
 
 権限付与メール
@@ -44,6 +46,7 @@ https://github.com/github-copilot/code-review-preview
 ※たかが数秒の違いですが、最初に設定してしまえば自動でやってくれるので、自動化をオススメします
 
 私は下記の記事を参考にして設定しました
+
 https://zenn.dev/ncdc/articles/7807f5b6e3ee88
 
 
@@ -71,6 +74,7 @@ https://zenn.dev/ncdc/articles/7807f5b6e3ee88
 
 ## ChatGPT CodeReviewの導入
 私は下記参照してやってました
+
 https://qiita.com/sauna1137/items/b0890684d45d30777072
 
 # 最後に
