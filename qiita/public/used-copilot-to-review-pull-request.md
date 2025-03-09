@@ -1,14 +1,14 @@
 ---
 title: GitHub Copilotのプルリクレビューを試してみた
-private: true
 tags:
   - GitHub
-  - Copilot
-  - PullRequest
   - レビュー
-id: null
+  - pullrequest
+  - copilot
+private: true
+updated_at: '2025-03-09T10:30:36+09:00'
+id: c65725bcb2910fb8d462
 organization_url_name: null
-updated_at: ''
 slide: false
 ignorePublish: false
 ---
