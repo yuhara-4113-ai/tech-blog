@@ -6,7 +6,7 @@ tags:
   - pullrequest
   - copilot
 private: false
-updated_at: '2025-03-09T11:12:48+09:00'
+updated_at: '2025-03-09T11:25:25+09:00'
 id: c65725bcb2910fb8d462
 organization_url_name: null
 slide: false
