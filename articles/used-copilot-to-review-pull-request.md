@@ -3,7 +3,7 @@ title: "GitHub Copilotのプルリクレビューを試してみた"
 emoji: "😊"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [GitHub,Copilot,PullRequest,レビュー]
-published: false
+published: true
 ---
 
 # はじめに
