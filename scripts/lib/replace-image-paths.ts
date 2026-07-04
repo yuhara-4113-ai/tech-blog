@@ -33,6 +33,14 @@ function getRepoInfo(): RepoInfo {
   }
 }
 
+function escapeHtmlAttribute(value: string) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+}
+
 export function replaceImagePaths(
   inputContent: string,
   repoInfo = getRepoInfo(),
@@ -47,8 +55,16 @@ export function replaceImagePaths(
   for (let i = 0; i < parts.length; i++) {
     if (!parts[i].startsWith('```')) {
       parts[i] = parts[i].replace(
-        /!\[([^\]]*)\]\((\/images\/[^)\s]+)([^)]*)\)/g,
-        `![$1](${githubRawUrl}$2$3)`,
+        /!\[([^\]]*)\]\((\/images\/[^)\s]+)(?:\s+=(\d*)x(\d*))?\)/g,
+        (_match, alt: string, path: string, width: string, height: string) => {
+          const url = `${githubRawUrl}${path}`
+          if (width || height) {
+            const widthAttribute = width ? ` width="${width}"` : ''
+            const heightAttribute = height ? ` height="${height}"` : ''
+            return `<img src="${escapeHtmlAttribute(url)}" alt="${escapeHtmlAttribute(alt)}"${widthAttribute}${heightAttribute}>`
+          }
+          return `![${alt}](${url})`
+        },
       )
     }
   }
