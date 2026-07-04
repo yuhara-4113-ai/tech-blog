@@ -4,8 +4,8 @@ private: true
 tags:
   - Codex
   - React
-  - GitHubActions
-  - GitHubPages
+  - github-actions
+  - github-pages
   - AI駆動開発
 updated_at: ''
 id: null
