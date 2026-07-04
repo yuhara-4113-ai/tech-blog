@@ -1,5 +1,5 @@
 ---
-title: "スマホからCodexへ指示してポケカ風の画像を生成するWebアプリを作成した"
+title: "スマホからCodexへ指示して「ポケカ風の画像を生成するWebアプリ」を作成した"
 emoji: "📱"
 type: "tech"
 topics: [Codex, React, github-actions, github-pages, AI駆動開発]

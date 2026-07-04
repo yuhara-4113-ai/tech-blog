@@ -1,13 +1,13 @@
 ---
-title: スマホからCodexへ指示してポケカ風の画像を生成するWebアプリを作成した
+title: スマホからCodexへ指示して「ポケカ風の画像を生成するWebアプリ」を作成した
 tags:
   - React
   - GithubPages
   - codex
   - GitHubActions
   - AI駆動開発
-private: true
-updated_at: '2026-07-04T19:53:02+09:00'
+private: false
+updated_at: '2026-07-04T20:00:16+09:00'
 id: 22e34fa082179b5d5700
 organization_url_name: null
 slide: false
