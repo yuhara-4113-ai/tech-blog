@@ -1,5 +1,5 @@
 ---
-title: "ほぼスマホからCodexへ指示してカード作成Webアプリを公開した"
+title: "スマホからCodexへ指示してポケカ風の画像を生成するWebアプリを作成した"
 emoji: "📱"
 type: "tech"
 topics: [Codex, React, github-actions, github-pages, AI駆動開発]
