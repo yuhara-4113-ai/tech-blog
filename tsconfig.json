@@ -6,5 +6,5 @@
     "esModuleInterop": true,
     "moduleResolution": "node"
   },
-  "include": ["scripts/ztoq.ts"]
+  "include": ["scripts/**/*.ts"]
 }
