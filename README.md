@@ -90,6 +90,25 @@ npx zenn list:articles
 
 公開せず下書きにする場合は、Zenn記事のFront Matterを`published: false`にします。変換後のQiita記事は`private: true`になります。
 
+## 記事の削除
+
+Zenn・Qiitaとも、リポジトリからMarkdownを削除しただけではサービス上の記事は削除されません。次の順番で削除します。
+
+1. リポジトリからZenn用とQiita用のMarkdownを両方削除します。
+
+   ```bash
+   git rm articles/your-article-slug.md
+   git rm qiita/public/your-article-slug.md
+   ```
+
+2. 削除をPull Requestにしてmainへマージします。
+3. [Zennの投稿管理](https://zenn.dev/dashboard)から対象記事を削除します。
+4. Qiitaの記事画面にあるメニューから対象記事を削除します。
+
+Zennの記事を先にWeb上で削除しても、リポジトリにMarkdownが残っていると次回デプロイ時に復活します。そのため、先にリポジトリから削除してmainへ反映します。
+
+記事で使用した`images/<記事slug>/`は、他の記事から参照されていないことを確認できた場合だけ削除します。共有している画像は残してください。
+
 ## 自動変換の対応範囲
 
 現在は次の差分を自動変換します。
