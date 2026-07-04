@@ -19,19 +19,21 @@ export function convertFrontmatter(outputPath?: string) {
     dataCloned.tags = dataCloned.topics
     delete dataCloned.topics
 
-    // Add new fields
-    if (outputPath && existsSync(outputPath)) {
-      const existingData = matter(readFileSync(outputPath, 'utf8')).data
-      dataCloned.id = existingData.id || null
-      dataCloned.organization_url_name =
-        existingData.organization_url_name || null
-    } else {
-      dataCloned.id = null
-      dataCloned.organization_url_name = null
-    }
-    dataCloned.updated_at = ''
-    dataCloned.slide = false
-    dataCloned.ignorePublish = false
+    // Preserve fields managed by Qiita CLI when regenerating an existing article.
+    const existingData =
+      outputPath && existsSync(outputPath)
+        ? matter(readFileSync(outputPath, 'utf8')).data
+        : {}
+    dataCloned.updated_at = existingData.updated_at ?? ''
+    dataCloned.id = existingData.id ?? null
+    dataCloned.organization_url_name =
+      existingData.organization_url_name ?? null
+    dataCloned.slide = existingData.slide ?? false
+    dataCloned.ignorePublish = existingData.ignorePublish ?? false
+    dataCloned.posting_campaign_uuid =
+      existingData.posting_campaign_uuid ?? null
+    dataCloned.agreed_posting_campaign_term =
+      existingData.agreed_posting_campaign_term ?? false
 
     const frontmatter = yaml.dump(dataCloned)
     return `---\n${frontmatter}---\n${content}`

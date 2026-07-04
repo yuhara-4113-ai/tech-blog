@@ -4,3 +4,6 @@ node_modules
 .idea
 .vscode
 pnpm-lock.yaml
+articles
+qiita/public
+images

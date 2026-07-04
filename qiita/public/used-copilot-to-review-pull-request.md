@@ -1,16 +1,18 @@
 ---
 title: GitHub Copilotのプルリクレビューを試してみた
+private: false
 tags:
   - GitHub
+  - Copilot
+  - PullRequest
   - レビュー
-  - pullrequest
-  - copilot
-private: false
 updated_at: '2025-03-09T11:35:27+09:00'
 id: c65725bcb2910fb8d462
 organization_url_name: null
 slide: false
 ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 # はじめに
@@ -36,7 +38,7 @@ https://docs.github.com/ja/copilot/using-github-copilot/code-review/using-copilo
 ## プルリクを作成してもReviewersにCopilotが表示されない
 単純に下記を見落としており、「プレビューに参加していないだけ」でした
 ※「個人プラン」は対象外なのかと勘違いし、調査で数時間無駄にしました
-![](https://raw.githubusercontent.com/yuhara-4113-ai/tech-blog/5-re-submit-article/images/used-copilot-to-review-pull-request/important-point.png)
+![](https://raw.githubusercontent.com/yuhara-4113-ai/tech-blog/main/images/used-copilot-to-review-pull-request/important-point.png)
 
 ### 対策
 下記の「Join the preview」をクリックで、GitHubから「権限付与メール」が届けばOKです
@@ -45,7 +47,7 @@ https://docs.github.com/ja/copilot/using-github-copilot/code-review/using-copilo
 https://github.com/github-copilot/code-review-preview
 
 権限付与メール
-![](https://raw.githubusercontent.com/yuhara-4113-ai/tech-blog/5-re-submit-article/images/used-copilot-to-review-pull-request/granted-access-GitHub-Copilot-code-review.png)
+![](https://raw.githubusercontent.com/yuhara-4113-ai/tech-blog/main/images/used-copilot-to-review-pull-request/granted-access-GitHub-Copilot-code-review.png)
 
 # プルリク作成時に自動でレビューしてもらう方法
 デフォルトでは手動でReviewersに「Copilot」をアサインする必要があります
@@ -58,8 +60,8 @@ https://zenn.dev/ncdc/articles/7807f5b6e3ee88
 
 
 # Copilotのコードレビュー結果
-![](https://raw.githubusercontent.com/yuhara-4113-ai/tech-blog/5-re-submit-article/images/used-copilot-to-review-pull-request/Copilot-code-review-1.png)
-![](https://raw.githubusercontent.com/yuhara-4113-ai/tech-blog/5-re-submit-article/images/used-copilot-to-review-pull-request/Copilot-code-review-2.png)
+![](https://raw.githubusercontent.com/yuhara-4113-ai/tech-blog/main/images/used-copilot-to-review-pull-request/Copilot-code-review-1.png)
+![](https://raw.githubusercontent.com/yuhara-4113-ai/tech-blog/main/images/used-copilot-to-review-pull-request/Copilot-code-review-2.png)
 上記のような結果でした
 基本的に下記構成でコメントしてくれるようです
 - PR Overview
