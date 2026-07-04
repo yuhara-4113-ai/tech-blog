@@ -2,7 +2,7 @@
 title: "ほぼスマホからCodexに指示して、カード作成Webアプリを公開した"
 emoji: "📱"
 type: "tech"
-topics: [Codex, React, GitHubActions, GitHubPages, AI駆動開発]
+topics: [Codex, React, github-actions, github-pages, AI駆動開発]
 published: false
 ---
 
