@@ -1,14 +1,14 @@
 ---
 title: ほぼスマホからCodexへ指示してカード作成Webアプリを公開した
-private: true
 tags:
-  - Codex
   - React
-  - github-actions
-  - github-pages
+  - GithubPages
+  - codex
+  - GitHubActions
   - AI駆動開発
-updated_at: ''
-id: null
+private: true
+updated_at: '2026-07-04T19:53:02+09:00'
+id: 22e34fa082179b5d5700
 organization_url_name: null
 slide: false
 ignorePublish: false
