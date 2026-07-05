@@ -1,5 +1,5 @@
 ---
-title: 1年前にCopilotで挫折したポケカ風画像生成アプリを、ほぼスマホからCodexへ指示して公開した
+title: 1年前にCopilotで挫折した「ポケカ風画像生成アプリ」をスマホからCodexへ指示して完成させた
 tags:
   - React
   - GithubPages
