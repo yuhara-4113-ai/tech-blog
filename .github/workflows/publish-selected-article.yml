@@ -1,0 +1,71 @@
+name: Publish selected article
+
+on:
+  workflow_dispatch:
+    inputs:
+      article_slug:
+        description: '公開する記事のslug（拡張子なし）'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-articles-main
+  cancel-in-progress: false
+
+jobs:
+  publish_article:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      ARTICLE_SLUG: ${{ inputs.article_slug }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Prepare selected article
+        run: npm run publish:prepare -- "$ARTICLE_SLUG"
+
+      - name: Validate contents
+        run: |
+          npm run typecheck
+          npm test
+          npm run format:check
+          npx zenn list:articles
+
+      - name: Publish selected article to Qiita
+        run: npx qiita publish "$ARTICLE_SLUG" --force
+        env:
+          QIITA_TOKEN: ${{ secrets.QIITA_TOKEN }}
+          QIITA_CLI_ITEMS_ROOT: ./qiita
+
+      - name: Commit publication state and metadata
+        run: |
+          git add -- "articles/${ARTICLE_SLUG}.md" "qiita/public/${ARTICLE_SLUG}.md"
+          if git diff --staged --exit-code --quiet; then
+            echo "No publication changes to commit."
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m "[skip ci] Publish article: ${ARTICLE_SLUG}"
+          git push origin HEAD:main
+
+      - name: Add workflow summary
+        run: |
+          echo "## Published article" >> "$GITHUB_STEP_SUMMARY"
+          echo "- slug: \`${ARTICLE_SLUG}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Zenn: \`articles/${ARTICLE_SLUG}.md\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Qiita: \`qiita/public/${ARTICLE_SLUG}.md\`" >> "$GITHUB_STEP_SUMMARY"
