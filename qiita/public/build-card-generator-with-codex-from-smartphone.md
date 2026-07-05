@@ -1,13 +1,13 @@
 ---
 title: 1年前にCopilotで挫折した「ポケカ風画像生成アプリ」をスマホからCodexへ指示して完成させた
 tags:
-  - 生成AI
+  - React
   - 個人開発
   - OpenAI
   - codex
-  - React
+  - 生成AI
 private: false
-updated_at: '2026-07-05T10:39:06+09:00'
+updated_at: '2026-07-05T10:53:25+09:00'
 id: 22e34fa082179b5d5700
 organization_url_name: null
 slide: false
