@@ -2,7 +2,7 @@
 title: "1年前にCopilotで挫折した「ポケカ風画像生成アプリ」をスマホからCodexへ指示して完成させた"
 emoji: "📱"
 type: "tech"
-topics: [Codex, React, github-actions, github-pages, AI駆動開発]
+topics: [生成AI, 個人開発, OpenAI, codex, React]
 published: false
 ---
 
