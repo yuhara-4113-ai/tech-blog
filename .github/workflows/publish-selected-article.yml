@@ -60,7 +60,8 @@ jobs:
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m "[skip ci] Publish article: ${ARTICLE_SLUG}"
+          # Zenn Connect uses this push to deploy the article, so do not add [skip ci].
+          git commit -m "Publish article: ${ARTICLE_SLUG}"
           git push origin HEAD:main
 
       - name: Add workflow summary

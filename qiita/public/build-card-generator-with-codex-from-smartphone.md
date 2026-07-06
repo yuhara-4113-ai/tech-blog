@@ -1,12 +1,12 @@
 ---
 title: 1年前にCopilotで挫折した「ポケカ風画像生成アプリ」をスマホからCodexへ指示して完成させた
+private: false
 tags:
-  - React
+  - 生成AI
   - 個人開発
   - OpenAI
   - codex
-  - 生成AI
-private: false
+  - React
 updated_at: '2026-07-06T10:44:41+09:00'
 id: 22e34fa082179b5d5700
 organization_url_name: null
@@ -46,7 +46,7 @@ CodexでのWebアプリ開発だけでなく、リポジトリを使った家族
 入力内容はリアルタイムでカードへ反映されます。
 完成したカードは高解像度PNGで保存できます。
 
-![Original Card Studioの画面](https://raw.githubusercontent.com/yuhara-4113-ai/tech-blog/main/images/build-card-generator-with-codex-from-smartphone/app-overview.png)
+![Original Card Studioでポケカ風画像を編集している画面](https://raw.githubusercontent.com/yuhara-4113-ai/tech-blog/main/images/build-card-generator-with-codex-from-smartphone/app-overview.png)
 
 - 公開URL: [Original Card Studio](https://yuhara-4113-ai.github.io/original-poke-card-generator/)
 - GitHub: [yuhara-4113-ai/original-poke-card-generator](https://github.com/yuhara-4113-ai/original-poke-card-generator)
