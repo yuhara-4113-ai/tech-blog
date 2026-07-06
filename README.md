@@ -82,13 +82,36 @@ npx zenn list:articles
 
 ## 公開
 
-1. `articles`のZenn記事と`qiita/public`の変換結果を同じPull Requestへ含めます。
-2. Pull Requestをmainへマージします。
-3. ZennはGitHub連携により記事を反映します。
-4. Qiitaは`Publish articles` GitHub Actionsにより記事を反映します。
-5. Qiita CLIが記事IDや更新日時を書き換えた場合、Actionsがその変更をmainへ自動コミットします。
+### 実サイトで下書きを確認する
 
-公開せず下書きにする場合は、Zenn記事のFront Matterを`published: false`にします。変換後のQiita記事は`private: true`になります。
+1. Zenn記事のFront Matterを`published: false`にします。
+2. `npm run ztoq -- articles/your-article-slug.md`を実行し、Qiita版が`private: true`になっていることを確認します。
+3. Zenn記事とQiita版を同じPull Requestへ含め、mainへマージします。
+4. Zennの下書きとQiitaの限定共有記事を、それぞれ実サイトで確認します。
+
+実サイトでは表示確認だけを行います。本文、タイトル、タグはWeb上で編集せず、リポジトリ側を修正してください。
+
+### 確認した記事を公開する
+
+1. GitHubの **Actions** を開きます。
+2. **Publish selected article** を選択します。
+3. **Run workflow** を開き、`article_slug`へ公開する記事のslugを入力します。
+
+   ```text
+   your-article-slug
+   ```
+
+4. **Run workflow** を実行します。
+
+Workflowは対象記事だけに対して、次の処理を行います。
+
+- Zenn記事を`published: true`へ変更
+- Qiita版を`private: false`へ再生成
+- 型チェック、テスト、フォーマット、Zenn記事一覧を検証
+- Qiita CLIで対象記事を公開
+- ZennとQiitaの公開状態、記事ID、更新日時をmainへ自動コミット
+
+Qiitaへの公開では、対象記事だけに`--force`を指定します。これは実サイトで確認済みのリポジトリ内容を正本として反映し、Web側の公開操作による`updated_at`競合を避けるためです。他の記事は強制更新しません。
 
 ## 記事の削除
 

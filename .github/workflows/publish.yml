@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: publish-articles-main
   cancel-in-progress: false
 
 jobs:
