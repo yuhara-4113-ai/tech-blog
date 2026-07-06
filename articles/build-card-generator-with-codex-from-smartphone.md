@@ -36,7 +36,7 @@ CodexでのWebアプリ開発だけでなく、リポジトリを使った家族
 入力内容はリアルタイムでカードへ反映されます。
 完成したカードは高解像度PNGで保存できます。
 
-![Original Card Studioの画面](/images/build-card-generator-with-codex-from-smartphone/app-overview.png)
+![Original Card Studioでポケカ風画像を編集している画面](/images/build-card-generator-with-codex-from-smartphone/app-overview.png)
 
 - 公開URL: [Original Card Studio](https://yuhara-4113-ai.github.io/original-poke-card-generator/)
 - GitHub: [yuhara-4113-ai/original-poke-card-generator](https://github.com/yuhara-4113-ai/original-poke-card-generator)
