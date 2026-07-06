@@ -30,6 +30,9 @@ published: false
 ---
 
 本文
+\`\`\`yaml
+published: false
+\`\`\`
 `,
   )
   writeFileSync(
@@ -59,7 +62,8 @@ agreed_posting_campaign_term: false
   assert.equal(qiita.data.private, false)
   assert.equal(qiita.data.id, 'article-id')
   assert.equal(qiita.data.updated_at, '2026-07-06T00:00:00+09:00')
-  assert.equal(qiita.content.trim(), '本文')
+  assert.match(zenn.content, /本文\n```yaml\npublished: false\n```/)
+  assert.match(qiita.content, /本文\n```yaml\npublished: false\n```/)
 })
 
 test('rejects a slug that can escape the article directories', () => {
@@ -84,11 +88,29 @@ topics: [Zenn]
 ---
 
 本文
+\`\`\`yaml
+published: false
+\`\`\`
 `,
   )
+
+  const originalContent = readFileSync(zennPath, 'utf8')
 
   assert.throws(
     () => prepareArticlePublish(slug, rootDir),
     /published設定が見つかりません/,
+  )
+  assert.equal(readFileSync(zennPath, 'utf8'), originalContent)
+})
+
+test('requires Front Matter at the beginning of the Zenn article', () => {
+  const rootDir = createArticleRoot()
+  const slug = 'sample-article'
+  const zennPath = join(rootDir, 'articles', `${slug}.md`)
+  writeFileSync(zennPath, '本文\npublished: false\n')
+
+  assert.throws(
+    () => prepareArticlePublish(slug, rootDir),
+    /Front Matterが見つかりません/,
   )
 })

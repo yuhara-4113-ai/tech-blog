@@ -3,6 +3,7 @@ import { resolve } from 'node:path'
 import { zennMarkdownToQiitaMarkdown } from './lib'
 
 const slugPattern = /^[a-z0-9][a-z0-9-]*$/
+const frontMatterPattern = /^(---\r?\n)([\s\S]*?)(\r?\n---(?:\r?\n|$))/
 const publishedPattern = /^published:\s*(true|false)\s*$/m
 
 export function prepareArticlePublish(slug: string, rootDir = process.cwd()) {
@@ -18,14 +19,25 @@ export function prepareArticlePublish(slug: string, rootDir = process.cwd()) {
   }
 
   const zennContent = readFileSync(zennPath, 'utf8')
-  if (!publishedPattern.test(zennContent)) {
+  const frontMatterMatch = zennContent.match(frontMatterPattern)
+  if (!frontMatterMatch) {
+    throw new Error(`Front Matterが見つかりません: articles/${slug}.md`)
+  }
+
+  const frontMatter = frontMatterMatch[2]
+  if (!publishedPattern.test(frontMatter)) {
     throw new Error(`published設定が見つかりません: articles/${slug}.md`)
   }
 
-  const publishedZennContent = zennContent.replace(
+  const publishedFrontMatter = frontMatter.replace(
     publishedPattern,
     'published: true',
   )
+  const publishedZennContent =
+    frontMatterMatch[1] +
+    publishedFrontMatter +
+    frontMatterMatch[3] +
+    zennContent.slice(frontMatterMatch[0].length)
   const publishedQiitaContent = zennMarkdownToQiitaMarkdown(
     publishedZennContent,
     qiitaPath,
